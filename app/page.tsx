@@ -4,6 +4,66 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Brain } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
+// Typewriter component
+const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+  const [displayText, setDisplayText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (currentIndex < text.length) {
+        setDisplayText(prev => prev + text[currentIndex])
+        setCurrentIndex(prev => prev + 1)
+      }
+    }, delay + currentIndex * 100)
+
+    return () => clearTimeout(timer)
+  }, [currentIndex, text, delay])
+
+  return (
+    <span>
+      {displayText}
+      <span className="animate-pulse">|</span>
+    </span>
+  )
+}
+
+// Floating dots component
+const FloatingDots = () => {
+  const dots = Array.from({ length: 15 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    delay: Math.random() * 2,
+    duration: 3 + Math.random() * 2
+  }))
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0">
+      {dots.map((dot) => (
+        <motion.div
+          key={dot.id}
+          className="absolute w-1 h-1 bg-white rounded-full"
+          style={{
+            left: `${dot.x}%`,
+            top: `${dot.y}%`,
+          }}
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+          }}
+          transition={{
+            duration: dot.duration,
+            repeat: Infinity,
+            delay: dot.delay,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function Home() {
   const [mounted, setMounted] = useState(false)
   const { scrollY } = useScroll()
@@ -17,6 +77,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white relative">
+      {/* Floating dots background effect */}
+      <FloatingDots />
+      
       {/* Clean background */}
       <div className="fixed inset-0 bg-gradient-to-b from-black via-gray-950 to-black -z-10">
         {/* Subtle gradient overlay */}
@@ -63,7 +126,7 @@ export default function Home() {
           >
             <div className="space-y-4">
               <h1 className="text-6xl md:text-8xl font-light text-white leading-tight">
-                Next-Generation
+                <TypewriterText text="Logistico" delay={500} />
                 <span className="block bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent font-normal">
                   Federal Procurement
                 </span>
