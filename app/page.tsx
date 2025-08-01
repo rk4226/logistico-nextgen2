@@ -59,8 +59,8 @@ const FloatingDots = () => {
   )
 
   useEffect(() => {
-    const createNewConnections = () => {
-      const newConnections = []
+    const createNewConnections = (): Array<{from: number, to: number, opacity: number, id: string}> => {
+      const newConnections: Array<{from: number, to: number, opacity: number, id: string}> = []
       const numConnections = Math.floor(Math.random() * 4) + 4 // 4-7 connections
       
       for (let i = 0; i < numConnections; i++) {
