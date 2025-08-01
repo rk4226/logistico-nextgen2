@@ -4,21 +4,35 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Brain } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
-// Typewriter component
+// Typewriter component with loop
 const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
   const [displayText, setDisplayText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
+    const speed = isDeleting ? 50 : 80 // Faster typing and deleting
+    
     const timer = setTimeout(() => {
-      if (currentIndex < text.length) {
+      if (!isDeleting && currentIndex < text.length) {
+        // Typing forward
         setDisplayText(prev => prev + text[currentIndex])
         setCurrentIndex(prev => prev + 1)
+      } else if (!isDeleting && currentIndex === text.length) {
+        // Pause at end, then start deleting
+        setTimeout(() => setIsDeleting(true), 2000)
+      } else if (isDeleting && currentIndex > 0) {
+        // Deleting backward
+        setDisplayText(prev => prev.slice(0, -1))
+        setCurrentIndex(prev => prev - 1)
+      } else if (isDeleting && currentIndex === 0) {
+        // Start typing again
+        setIsDeleting(false)
       }
-    }, delay + currentIndex * 100)
+    }, currentIndex === 0 && !isDeleting ? delay : speed)
 
     return () => clearTimeout(timer)
-  }, [currentIndex, text, delay])
+  }, [currentIndex, text, delay, isDeleting])
 
   return (
     <span>
@@ -28,29 +42,120 @@ const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) =
   )
 }
 
-// Floating dots component
+// Floating dots component with smooth connecting lines
 const FloatingDots = () => {
-  const dots = Array.from({ length: 15 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 2,
-    duration: 3 + Math.random() * 2
-  }))
+  const [connections, setConnections] = useState<Array<{from: number, to: number, opacity: number, id: string}>>([])
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  
+  // Fixed dot positions that don't change
+  const [dots] = useState(() => 
+    Array.from({ length: 12 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 90 + 5, // Keep dots away from edges
+      y: Math.random() * 90 + 5,
+      delay: Math.random() * 2,
+      duration: 4 + Math.random() * 3 // Longer, more stable blinking
+    }))
+  )
+
+  useEffect(() => {
+    const createNewConnections = () => {
+      const newConnections = []
+      const numConnections = Math.floor(Math.random() * 4) + 4 // 4-7 connections
+      
+      for (let i = 0; i < numConnections; i++) {
+        const from = Math.floor(Math.random() * dots.length)
+        let to = Math.floor(Math.random() * dots.length)
+        
+        // Ensure we don't connect to self and avoid duplicate connections
+        while (to === from || newConnections.some(conn => 
+          (conn.from === from && conn.to === to) || 
+          (conn.from === to && conn.to === from)
+        )) {
+          to = Math.floor(Math.random() * dots.length)
+        }
+        
+        newConnections.push({
+          from,
+          to,
+          opacity: Math.random() * 0.25 + 0.2, // 0.2 to 0.45 opacity
+          id: `${from}-${to}-${Date.now()}-${i}`
+        })
+      }
+      
+      return newConnections
+    }
+
+    // Initial connections after a short delay
+    setTimeout(() => {
+      setConnections(createNewConnections())
+    }, 1000)
+
+    const interval = setInterval(() => {
+      // Start transition - fade out current lines
+      setIsTransitioning(true)
+      
+      // After lines completely fade out, create new constellation
+      setTimeout(() => {
+        setConnections(createNewConnections())
+        setIsTransitioning(false)
+      }, 1200) // Longer fade out time
+      
+    }, 5000) // Slower changes every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [dots])
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
+      {/* SVG for drawing lines */}
+      <svg className="absolute inset-0 w-full h-full">
+        {connections.map((connection) => {
+          const fromDot = dots[connection.from]
+          const toDot = dots[connection.to]
+          
+          return (
+            <motion.line
+              key={connection.id}
+              x1={`${fromDot.x}%`}
+              y1={`${fromDot.y}%`}
+              x2={`${toDot.x}%`}
+              y2={`${toDot.y}%`}
+              stroke="white"
+              strokeWidth="0.5"
+              initial={{ opacity: 0, pathLength: 0 }}
+              animate={{ 
+                opacity: isTransitioning ? 0 : connection.opacity,
+                pathLength: isTransitioning ? 0 : 1
+              }}
+              transition={{ 
+                pathLength: {
+                  duration: isTransitioning ? 1.2 : 2.5,
+                  ease: "easeInOut",
+                  delay: isTransitioning ? 0 : 0.3
+                },
+                opacity: {
+                  duration: isTransitioning ? 1.2 : 2,
+                  ease: "easeInOut"
+                }
+              }}
+            />
+          )
+        })}
+      </svg>
+      
+      {/* Fixed position dots with gentle blinking */}
       {dots.map((dot) => (
         <motion.div
           key={dot.id}
-          className="absolute w-1 h-1 bg-white rounded-full"
+          className="absolute w-2 h-2 bg-white rounded-full"
           style={{
             left: `${dot.x}%`,
             top: `${dot.y}%`,
           }}
           animate={{
-            opacity: [0, 1, 0],
-            scale: [0, 1, 0],
+            opacity: [0.3, 1, 0.3],
+            scale: [0.8, 1, 0.8],
           }}
           transition={{
             duration: dot.duration,
