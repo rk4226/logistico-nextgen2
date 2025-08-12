@@ -40,7 +40,7 @@
   }
   
   .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
   }
   
   .glow-effect {
