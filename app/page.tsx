@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import VideoBackground from './components/VideoBackground'
 import dynamic from 'next/dynamic'
 const WorldMapBackground = dynamic(() => import('./components/WorldMapBackground'), { ssr: false })
+import StockShowcase from './components/StockShowcase'
 
 // Typewriter component with loop
 const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
@@ -106,64 +107,18 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
+            <div className="flex justify-center items-center">
+              <a href="#showcase" className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
                 Explore Platform
-              </button>
-              <button className="border border-white/50 text-white/90 px-8 py-3 rounded-full font-medium hover:border-white hover:text-white transition-colors">
-                Watch Demo
-              </button>
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
-      {/* Post-hero wrapper with continuous gradient/map background */}
+      {/* Post-hero wrapper with dynamic visuals */}
       <div className="relative z-0 -mt-16">
-        <WorldMapBackground />
-
-              {/* What we do */}
-      <section id="what" className="relative pt-28 md:pt-36 pb-20 px-6 z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white text-lg">
-            <li>Source, classify, and track opportunities automatically</li>
-            <li>Assemble compliant responses with your data</li>
-            <li>Route for approval and submit on time</li>
-            <li>Hand off to fulfillment with clean structure</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section id="how" className="relative py-32 px-6 z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-            <li className="space-y-2">
-              <div className="text-2xl">1. Ingest</div>
-              <p>We pull from your sources and normalize</p>
-            </li>
-            <li className="space-y-2">
-              <div className="text-2xl">2. Prepare</div>
-              <p>We classify, draft responses, and fill forms</p>
-            </li>
-            <li className="space-y-2">
-              <div className="text-2xl">3. Submit</div>
-              <p>You review, approve, and submit. We track.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      {/* Who it's for */}
-      <section id="who" className="relative py-32 px-6 z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white text-lg">
-            <li>SMBs selling to federal agencies that need fewer steps</li>
-            <li>Teams with scattered documents and repeated forms</li>
-            <li>Leads who want clarity on what to bid and when</li>
-            <li>Operators who just want procurement to be easy</li>
-          </ul>
-        </div>
-      </section>
+        {/* Replace map with stock image showcase */}
+        <StockShowcase />
 
       {/* Footer - Minimal */}
       <footer className="relative py-16 px-6 border-t border-white/10 z-10">

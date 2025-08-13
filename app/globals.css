@@ -90,6 +90,14 @@
   .animate-ripple {
     animation: ripple 1s ease-out infinite;
   }
+
+  .animate-marquee {
+    animation: marquee linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-reverse linear infinite;
+  }
 }
 
 @keyframes float {
@@ -148,6 +156,16 @@
   100% { 
     background-position: 200% 0; 
   }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 /* Custom scrollbar */
