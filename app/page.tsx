@@ -89,8 +89,8 @@ export default function Home() {
       <section className="relative isolate pt-32 pb-20 px-6 min-h-screen flex items-center z-30">
         {/* Section-scoped video background */}
         <VideoBackground variant="section" className="-z-10 opacity-100" />
-        {/* Smooth bottom fade into the next section's sky color */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent to-sky-500/80" />
+        {/* Neutral bottom fade (remove blue hue) */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent to-black/40" />
         <div className="max-w-6xl mx-auto text-center w-full relative z-50">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
