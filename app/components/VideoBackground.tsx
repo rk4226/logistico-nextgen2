@@ -11,18 +11,16 @@ export default function VideoBackground({ className = '', variant = 'fixed' }: V
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
   
-  // Array of video sources from the public/videos folder (supports .mov)
+  // Array of video sources from the public/videos folder (current .mp4 set)
   const videos = [
-    '/videos/AdobeStock_1378395330_Video_HD_Preview.mov',
-    '/videos/AdobeStock_1408722589_Video_HD_Preview.mov',
-    '/videos/AdobeStock_220316322_Video_HD_Preview.mov',
-    '/videos/AdobeStock_266166666_Video_HD_Preview.mov',
-    '/videos/AdobeStock_602645772_Video_HD_Preview.mov',
-    '/videos/AdobeStock_1618792790_Video_HD_Preview.mov',
-    // Fallback MP4s
-    '/videos/videoplayback.mp4',
-    '/videos/videoplayback-1.mp4',
-    '/videos/videoplayback-2.mp4',
+    '/videos/10410822-uhd_4096_2160_24fps.mp4',
+    '/videos/12103315-uhd_3840_2160_24fps.mp4',
+    '/videos/5882849-hd_1920_1080_30fps.mp4',
+    '/videos/6841064-hd_1920_1080_30fps.mp4',
+    '/videos/6841065-hd_1920_1080_30fps.mp4',
+    '/videos/7467746-hd_1920_1080_30fps.mp4',
+    '/videos/8178345-uhd_2560_1440_24fps.mp4',
+    '/videos/855121-hd_1920_1080_30fps.mp4',
   ]
 
   useEffect(() => {
