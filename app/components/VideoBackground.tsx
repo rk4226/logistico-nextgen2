@@ -11,8 +11,15 @@ export default function VideoBackground({ className = '', variant = 'fixed' }: V
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
   
-  // Array of video sources from the videos folder
+  // Array of video sources from the public/videos folder (supports .mov)
   const videos = [
+    '/videos/AdobeStock_1378395330_Video_HD_Preview.mov',
+    '/videos/AdobeStock_1408722589_Video_HD_Preview.mov',
+    '/videos/AdobeStock_220316322_Video_HD_Preview.mov',
+    '/videos/AdobeStock_266166666_Video_HD_Preview.mov',
+    '/videos/AdobeStock_602645772_Video_HD_Preview.mov',
+    '/videos/AdobeStock_1618792790_Video_HD_Preview.mov',
+    // Fallback MP4s
     '/videos/videoplayback.mp4',
     '/videos/videoplayback-1.mp4',
     '/videos/videoplayback-2.mp4',
@@ -80,10 +87,7 @@ export default function VideoBackground({ className = '', variant = 'fixed' }: V
         playsInline
         preload="metadata"
         autoPlay
-      >
-        <source src={videos[currentVideoIndex]} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      />
       
       {/* Global wash - slightly darker to compensate for overlay removal */}
       <div className="absolute inset-0 bg-black/25" />
