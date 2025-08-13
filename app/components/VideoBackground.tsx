@@ -13,13 +13,13 @@ export default function VideoBackground({ className = '', variant = 'fixed' }: V
   
   // Array of video sources from the public/videos folder (current .mp4 set)
   const videos = [
-    '/videos/10410822-uhd_4096_2160_24fps.mp4',
+    // Removed 10410822-uhd_4096_2160_24fps.mp4 (too large)
     '/videos/12103315-uhd_3840_2160_24fps.mp4',
     '/videos/5882849-hd_1920_1080_30fps.mp4',
     '/videos/6841064-hd_1920_1080_30fps.mp4',
     '/videos/6841065-hd_1920_1080_30fps.mp4',
     '/videos/7467746-hd_1920_1080_30fps.mp4',
-    '/videos/8178345-uhd_2560_1440_24fps.mp4',
+    // Removed 8178345-uhd_2560_1440_24fps.mp4 (too large)
     '/videos/855121-hd_1920_1080_30fps.mp4',
   ]
 
