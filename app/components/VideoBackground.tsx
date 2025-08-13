@@ -46,38 +46,42 @@ export default function VideoBackground({ className = '', variant = 'fixed' }: V
 
     const handleCanPlay = () => {
       console.log('Video can play, attempting to play')
-      video.play().catch((error) => {
-        console.error('Video play failed:', error)
-      })
+      // Prevent brief flash by ensuring frame is ready
+      if (video.readyState >= 2) {
+        video.play().catch((error) => {
+          console.error('Video play failed:', error)
+        })
+      }
     }
 
     video.addEventListener('ended', handleVideoEnd)
     video.addEventListener('error', handleVideoError)
     video.addEventListener('canplay', handleCanPlay)
     
-    // Set the video source and load
-    video.src = videos[currentVideoIndex]
+    // Set the video source and load with crossfade
+    const currentSrc = videos[currentVideoIndex]
+    video.style.opacity = '0'
+    video.src = currentSrc
     video.load()
+
+    const onLoadedData = () => {
+      video.style.transition = 'opacity 300ms ease'
+      video.style.opacity = '1'
+    }
+    video.addEventListener('loadeddata', onLoadedData)
 
     return () => {
       video.removeEventListener('ended', handleVideoEnd)
       video.removeEventListener('error', handleVideoError)
       video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('loadeddata', onLoadedData)
     }
   }, [currentVideoIndex, videos])
 
   return (
     <div className={`${variant === 'fixed' ? 'fixed inset-0' : 'absolute inset-0'} z-0 overflow-hidden ${className}`}>
-      {/* Fallback gradient background */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-black"
-        style={{
-          background: `
-            radial-gradient(ellipse at center top, #1e3a8a 0%, #7c3aed 70%, #000000 100%),
-            radial-gradient(ellipse at center 40%, #3b82f620 0%, transparent 50%)
-          `
-        }}
-      />
+      {/* Neutral fallback background (removes purple flash between videos) */}
+      <div className="absolute inset-0 bg-black" />
       
       <video
         ref={videoRef}
@@ -85,7 +89,7 @@ export default function VideoBackground({ className = '', variant = 'fixed' }: V
         muted
         loop={false}
         playsInline
-        preload="metadata"
+        preload="auto"
         autoPlay
       />
       
