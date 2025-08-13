@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Brain } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import VideoBackground from './components/VideoBackground'
@@ -48,15 +48,6 @@ const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) =
 // Removed FloatingDots background effect per request
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false)
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 1000], [0, -200])
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
 
   return (
     <div className="min-h-screen text-white relative">
@@ -94,12 +85,12 @@ export default function Home() {
       </nav>
 
             {/* Hero Section - Clean and Minimal */}
-      <section className="relative pt-32 pb-20 px-6 min-h-screen flex items-center z-10">
+      <section className="relative isolate pt-32 pb-20 px-6 min-h-screen flex items-center z-30">
         {/* Section-scoped video background */}
-        <VideoBackground variant="section" className="-z-10" />
+        <VideoBackground variant="section" className="-z-10 opacity-100" />
         {/* Smooth bottom fade into the next section's sky color */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent to-sky-500/80" />
-        <div className="max-w-6xl mx-auto text-center w-full">
+        <div className="max-w-6xl mx-auto text-center w-full relative z-50">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -130,8 +121,8 @@ export default function Home() {
       <div className="relative z-0 -mt-16">
         <WorldMapBackground />
 
-            {/* What we do */}
-      <section id="what" className="relative py-20 px-6 z-10">
+              {/* What we do */}
+      <section id="what" className="relative pt-28 md:pt-36 pb-20 px-6 z-10">
         <div className="max-w-6xl mx-auto text-center">
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white text-lg">
             <li>Source, classify, and track opportunities automatically</li>

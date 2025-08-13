@@ -29,9 +29,9 @@ const WorldMapBackground = memo(function WorldMapBackground({ className = '' }: 
   const markers = useMemo(generateMarkers, [])
 
   return (
-    <div className={`absolute inset-0 -z-10 pointer-events-none ${className}`}>
+    <div className={`absolute inset-0 z-0 pointer-events-none mix-blend-screen opacity-90 ${className}`}>
       {/* Gradient color scheme background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-sky-500 via-slate-700 to-orange-500" />
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-600 via-slate-800 to-orange-700 opacity-60" />
       <ComposableMap
         projectionConfig={{ scale: 155 }}
         className="w-full h-full"
@@ -39,15 +39,15 @@ const WorldMapBackground = memo(function WorldMapBackground({ className = '' }: 
       >
         <ZoomableGroup zoom={1} center={[0, 20]}>
           <Geographies geography={WORLD_TOPO_JSON}>
-            {({ geographies }) =>
-              geographies.map((geo) => (
+            {({ geographies }: { geographies: any[] }) =>
+              geographies.map((geo: any) => (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
                   style={{
-                    default: { fill: 'transparent', stroke: 'rgba(255,255,255,0.45)', strokeWidth: 0.6 },
-                    hover: { fill: 'transparent', stroke: 'rgba(255,255,255,0.6)', strokeWidth: 0.7 },
-                    pressed: { fill: 'transparent', stroke: 'rgba(255,255,255,0.6)', strokeWidth: 0.7 },
+                    default: { fill: 'rgba(255,255,255,0.06)', stroke: 'rgba(255,255,255,0.95)', strokeWidth: 1.1 },
+                    hover: { fill: 'rgba(255,255,255,0.08)', stroke: 'rgba(255,255,255,1)', strokeWidth: 1.25 },
+                    pressed: { fill: 'rgba(255,255,255,0.08)', stroke: 'rgba(255,255,255,1)', strokeWidth: 1.25 },
                   }}
                 />
               ))
@@ -56,9 +56,9 @@ const WorldMapBackground = memo(function WorldMapBackground({ className = '' }: 
 
           {markers.map(({ name, coordinates }, idx) => (
             <Marker key={name} coordinates={coordinates}>
-              <circle r={3} fill="#fff" opacity={0.9} className="animate-pulse" />
+              <circle r={4} fill="#fff" opacity={0.95} className="animate-pulse" />
               {/* Animated ripple */}
-              <circle r={3} fill="none" stroke="#fff" strokeOpacity={0.6} className="animate-[ripple_2.5s_ease-out_infinite]" />
+              <circle r={4} fill="none" stroke="#fff" strokeOpacity={0.8} className="animate-ripple" />
             </Marker>
           ))}
         </ZoomableGroup>
