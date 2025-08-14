@@ -77,7 +77,7 @@ export default function Home() {
               <a href="#who" className="text-white/80 hover:text-white transition-colors text-sm font-medium">
                 Who it's for
               </a>
-              <a href="mailto:hello@logistico.ai" className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+              <a href="/contact" className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
                 Contact
               </a>
             </div>
@@ -135,7 +135,7 @@ export default function Home() {
               <a href="#what" className="text-white/80 hover:text-white transition-colors text-sm">What we do</a>
               <a href="#how" className="text-white/80 hover:text-white transition-colors text-sm">How it works</a>
               <a href="#who" className="text-white/80 hover:text-white transition-colors text-sm">Who it's for</a>
-              <a href="mailto:hello@logistico.ai" className="text-white/80 hover:text-white transition-colors text-sm">Contact</a>
+              <a href="/contact" className="text-white/80 hover:text-white transition-colors text-sm">Contact</a>
             </div>
           </div>
           
