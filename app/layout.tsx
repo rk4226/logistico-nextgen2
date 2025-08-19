@@ -53,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased`}>
+        <VideoBackground variant="fixed" />
         {children}
         {/* Overlay removed; handled inside VideoBackground to avoid dimming text */}
       </body>
