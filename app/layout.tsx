@@ -18,11 +18,10 @@ export const metadata: Metadata = {
   robots: 'index, follow',
   icons: {
     icon: [
-      { url: '/favicon.jpg', type: 'image/jpeg' },
-      { url: '/favicon.ico', type: 'image/x-icon' },
+      { url: '/favicon.png?v=2', type: 'image/png' },
     ],
-    apple: '/favicon.jpg',
-    shortcut: '/favicon.jpg',
+    apple: '/favicon.png?v=2',
+    shortcut: '/favicon.png?v=2',
   },
   openGraph: {
     title: 'Logistico.AI - Next-Generation Federal Procurement Automation',
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/favicon.jpg',
+        url: '/favicon.png?v=2',
         width: 32,
         height: 32,
         alt: 'Logistico.AI - Logistics and Delivery Icon',
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Logistico.AI - Next-Generation Federal Procurement Automation',
     description: 'AI-driven internal platform automating the full lifecycle of federal procurement solicitations.',
-    images: ['/favicon.jpg'],
+    images: ['/favicon.png?v=2'],
   },
 }
 
