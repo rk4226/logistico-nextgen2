@@ -126,6 +126,9 @@ export default function Home() {
               <a href="/contact" className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
                 Contact
               </a>
+              <a href="/sign-in" className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                Sign in
+              </a>
             </div>
           </div>
         </div>
@@ -151,7 +154,10 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center gap-3">
+              <a href="#showcase" className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
+                Explore Platform
+              </a>
               <a href="/sign-in" className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
                 Sign in
               </a>
