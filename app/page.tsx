@@ -68,7 +68,7 @@ export default function Home() {
             <div className="hidden md:grid grid-cols-5 items-center w-full gap-x-40 xl:gap-x-64">
               {/* What we do */}
               <div className="relative group justify-self-start" onMouseLeave={() => setOpenMenu(null)}>
-                <button type="button" onClick={() => setOpenMenu(openMenu === 'what' ? null : 'what')} className={`${isActiveTop('/what') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium tracking-wide`}>
+                <button type="button" onClick={() => setOpenMenu(openMenu === 'what' ? null : 'what')} className={`${isActiveTop('/what') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-semibold tracking-wider uppercase`}>
                   What we do
                 </button>
                 <div className={`${openMenu === 'what' ? 'visible opacity-100' : 'invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100'} transition-opacity duration-150 absolute left-0 top-full mt-3 w-64 rounded-xl bg-black/80 backdrop-blur-xl border border-white/10 shadow-xl z-50`}>
@@ -83,7 +83,7 @@ export default function Home() {
 
               {/* How it works */}
               <div className="relative group justify-self-center" onMouseLeave={() => setOpenMenu(null)}>
-                <button type="button" onClick={() => setOpenMenu(openMenu === 'how' ? null : 'how')} className={`${isActiveTop('/how') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium tracking-wide`}>
+                <button type="button" onClick={() => setOpenMenu(openMenu === 'how' ? null : 'how')} className={`${isActiveTop('/how') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-semibold tracking-wider uppercase`}>
                   How it works
                 </button>
                 <div className={`${openMenu === 'how' ? 'visible opacity-100' : 'invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100'} transition-opacity duration-150 absolute left-0 top-full mt-3 w-72 rounded-xl bg-black/80 backdrop-blur-xl border border-white/10 shadow-xl z-50`}>
@@ -102,7 +102,7 @@ export default function Home() {
 
               {/* Who it's for */}
               <div className="relative group justify-self-center" onMouseLeave={() => setOpenMenu(null)}>
-                <button type="button" onClick={() => setOpenMenu(openMenu === 'who' ? null : 'who')} className={`${isActiveTop('/who') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium tracking-wide`}>
+                <button type="button" onClick={() => setOpenMenu(openMenu === 'who' ? null : 'who')} className={`${isActiveTop('/who') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-semibold tracking-wider uppercase`}>
                   Who it's for
                 </button>
                 <div className={`${openMenu === 'who' ? 'visible opacity-100' : 'invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100'} transition-opacity duration-150 absolute left-0 top-full mt-3 w-72 rounded-xl bg-black/80 backdrop-blur-xl border border-white/10 shadow-xl z-50`}>
@@ -116,10 +116,10 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="/contact" className="justify-self-end bg-white text-black px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors">
+              <a href="/contact" className="justify-self-end bg-white text-black px-4 py-2 rounded-full text-sm font-semibold tracking-wider uppercase hover:bg-gray-100 transition-colors">
                 Contact
               </a>
-              <a href="/sign-in" className="justify-self-end px-4 py-2 rounded-full text-sm font-semibold border border-white/30 text-white hover:bg-white hover:text-black transition-colors">
+              <a href="/sign-in" className="justify-self-end px-4 py-2 rounded-full text-sm font-semibold tracking-wider uppercase border border-white/30 text-white hover:bg-white hover:text-black transition-colors">
                 Sign in
               </a>
             </div>
