@@ -148,10 +148,10 @@ export default function Home() {
             </div>
             
             <div className="flex justify-center items-center gap-3">
-              <a href="#showcase" className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
+              <a href="#showcase" className="bg-white text-black px-8 py-3 rounded-full font-semibold tracking-wider uppercase hover:bg-gray-100 transition-colors">
                 Explore Platform
               </a>
-              <a href="/sign-in" className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
+              <a href="/sign-in" className="bg-white text-black px-8 py-3 rounded-full font-semibold tracking-wider uppercase hover:bg-gray-100 transition-colors">
                 Sign in
               </a>
             </div>
@@ -177,10 +177,10 @@ export default function Home() {
             </div>
             
             <div className="flex space-x-8">
-              <a href="/what" className="text-white/80 hover:text-white transition-colors text-sm">What we do</a>
-              <a href="/how" className="text-white/80 hover:text-white transition-colors text-sm">How it works</a>
-              <a href="/who" className="text-white/80 hover:text-white transition-colors text-sm">Who it's for</a>
-              <a href="/contact" className="text-white/80 hover:text-white transition-colors text-sm">Contact</a>
+              <a href="/what" className="text-white/80 hover:text-white transition-colors text-sm font-semibold tracking-wider uppercase">What we do</a>
+              <a href="/how" className="text-white/80 hover:text-white transition-colors text-sm font-semibold tracking-wider uppercase">How it works</a>
+              <a href="/who" className="text-white/80 hover:text-white transition-colors text-sm font-semibold tracking-wider uppercase">Who it's for</a>
+              <a href="/contact" className="text-white/80 hover:text-white transition-colors text-sm font-semibold tracking-wider uppercase">Contact</a>
             </div>
           </div>
           
