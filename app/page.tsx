@@ -62,20 +62,13 @@ export default function Home() {
 
 
       {/* Clean Navigation */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/60 border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <Brain className="w-5 h-5 text-black" />
-              </div>
-              <span className="text-xl font-medium text-white">Logistico.AI</span>
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-8">
+      <nav className="fixed top-0 w-full z-50 bg-transparent backdrop-blur-sm">
+        <div className="w-full px-12">
+          <div className="py-6">
+            <div className="hidden md:grid grid-cols-5 items-center w-full gap-x-40 xl:gap-x-64">
               {/* What we do */}
-              <div className="relative group" onMouseLeave={() => setOpenMenu(null)}>
-                <button type="button" onClick={() => setOpenMenu(openMenu === 'what' ? null : 'what')} className={`${isActiveTop('/what') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium`}>
+              <div className="relative group justify-self-start" onMouseLeave={() => setOpenMenu(null)}>
+                <button type="button" onClick={() => setOpenMenu(openMenu === 'what' ? null : 'what')} className={`${isActiveTop('/what') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium tracking-wide`}>
                   What we do
                 </button>
                 <div className={`${openMenu === 'what' ? 'visible opacity-100' : 'invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100'} transition-opacity duration-150 absolute left-0 top-full mt-3 w-64 rounded-xl bg-black/80 backdrop-blur-xl border border-white/10 shadow-xl z-50`}>
@@ -89,8 +82,8 @@ export default function Home() {
               </div>
 
               {/* How it works */}
-              <div className="relative group" onMouseLeave={() => setOpenMenu(null)}>
-                <button type="button" onClick={() => setOpenMenu(openMenu === 'how' ? null : 'how')} className={`${isActiveTop('/how') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium`}>
+              <div className="relative group justify-self-center" onMouseLeave={() => setOpenMenu(null)}>
+                <button type="button" onClick={() => setOpenMenu(openMenu === 'how' ? null : 'how')} className={`${isActiveTop('/how') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium tracking-wide`}>
                   How it works
                 </button>
                 <div className={`${openMenu === 'how' ? 'visible opacity-100' : 'invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100'} transition-opacity duration-150 absolute left-0 top-full mt-3 w-72 rounded-xl bg-black/80 backdrop-blur-xl border border-white/10 shadow-xl z-50`}>
@@ -108,8 +101,8 @@ export default function Home() {
               </div>
 
               {/* Who it's for */}
-              <div className="relative group" onMouseLeave={() => setOpenMenu(null)}>
-                <button type="button" onClick={() => setOpenMenu(openMenu === 'who' ? null : 'who')} className={`${isActiveTop('/who') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium`}>
+              <div className="relative group justify-self-center" onMouseLeave={() => setOpenMenu(null)}>
+                <button type="button" onClick={() => setOpenMenu(openMenu === 'who' ? null : 'who')} className={`${isActiveTop('/who') ? 'text-white' : 'text-white/80 hover:text-white'} transition-colors text-sm font-medium tracking-wide`}>
                   Who it's for
                 </button>
                 <div className={`${openMenu === 'who' ? 'visible opacity-100' : 'invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100'} transition-opacity duration-150 absolute left-0 top-full mt-3 w-72 rounded-xl bg-black/80 backdrop-blur-xl border border-white/10 shadow-xl z-50`}>
@@ -123,10 +116,10 @@ export default function Home() {
                 </div>
               </div>
 
-              <a href="/contact" className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+              <a href="/contact" className="justify-self-end bg-white text-black px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors">
                 Contact
               </a>
-              <a href="/sign-in" className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+              <a href="/sign-in" className="justify-self-end px-4 py-2 rounded-full text-sm font-semibold border border-white/30 text-white hover:bg-white hover:text-black transition-colors">
                 Sign in
               </a>
             </div>
