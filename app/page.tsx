@@ -151,9 +151,6 @@ export default function Home() {
               <a href="#showcase" className="bg-white text-black px-8 py-3 rounded-full font-semibold tracking-wider uppercase hover:bg-gray-100 transition-colors">
                 Explore Platform
               </a>
-              <a href="/sign-in" className="bg-white text-black px-8 py-3 rounded-full font-semibold tracking-wider uppercase hover:bg-gray-100 transition-colors">
-                Sign in
-              </a>
             </div>
           </motion.div>
         </div>
