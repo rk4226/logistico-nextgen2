@@ -11,18 +11,15 @@ export default function VideoBackground({ className = '', variant = 'fixed' }: V
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
   
-  // Array of video sources from the public/videos folder (current .mp4 set)
+  // Array of video sources from the public/videos folder (keep in-sync with files present)
   const videos = [
-    '/videos/12071094_3840_2160_60fps.mp4',
     '/videos/12103315-uhd_3840_2160_24fps.mp4',
-    '/videos/11243421-hd_1920_1080_60fps.mp4',
+    '/videos/13721788-hd_1920_1080_60fps.mp4',
     '/videos/16234911-hd_1920_1080_30fps.mp4',
-    '/videos/4825305-hd_1920_1080_30fps.mp4',
-    '/videos/5882849-hd_1920_1080_30fps.mp4',
+    '/videos/6853964-hd_1920_1080_30fps.mp4',
     '/videos/7467746-hd_1920_1080_30fps.mp4',
-    '/videos/854262-hd_1920_1080_24fps.mp4',
+    '/videos/8178345-uhd_2560_1440_24fps.mp4',
     '/videos/855121-hd_1920_1080_30fps.mp4',
-    '/videos/8625405-hd_1920_1080_30fps.mp4',
   ]
 
   useEffect(() => {
